@@ -92,12 +92,6 @@ class _QuizPageState extends State<QuizPage> {
             child: TextButton(
               style: TextButton.styleFrom(
                 backgroundColor: Colors.green,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                elevation: 100,
               ),
               child: Text(
                 'True',
@@ -121,12 +115,6 @@ class _QuizPageState extends State<QuizPage> {
             child: TextButton(
               style: TextButton.styleFrom(
                 backgroundColor: Colors.red,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                elevation: 100,
               ),
               child: Text(
                 'False',
