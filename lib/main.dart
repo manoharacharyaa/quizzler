@@ -104,6 +104,14 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 // user picks True
+                setState(() {
+                  scorKeeper.add(
+                    Icon(
+                      Icons.check,
+                      color: Colors.green,
+                    ),
+                  );
+                });
               },
             ),
           ),
@@ -127,12 +135,23 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //User picks False
+                setState(() {
+                  scorKeeper.add(
+                    Icon(
+                      Icons.close,
+                      color: Colors.red,
+                    ),
+                  );
+                });
               },
             ),
           ),
         ),
-        Row(
-          children: scorKeeper,
+        Padding(
+          padding: const EdgeInsets.only(bottom: 10, left: 10),
+          child: Row(
+            children: scorKeeper,
+          ),
         ),
       ],
     );
