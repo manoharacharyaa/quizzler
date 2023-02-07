@@ -60,7 +60,7 @@ class _QuizPageState extends State<QuizPage> {
                 style: TextStyle(
                   color: Colors.white,
                   fontFamily: 'EuropaNuova',
-                  fontSize: 20,
+                  fontSize: 23,
                 ),
               ),
             ),
@@ -123,6 +123,26 @@ class _QuizPageState extends State<QuizPage> {
               },
             ),
           ),
+        ),
+        Row(
+          children: [
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+            Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+            Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+          ],
         ),
       ],
     );
