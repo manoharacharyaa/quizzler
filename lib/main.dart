@@ -43,24 +43,21 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scorKeeper = [
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    ),
-    Icon(
-      Icons.check,
-      color: Colors.green,
-    ),
-    Icon(
-      Icons.close,
-      color: Colors.red,
-    )
+  List<Icon> scorKeeper = [];
+
+  List<String> questions = [
+    'You can lead a cow down stairs but not up stairs.',
+    'Approximately one quarter of human bones are in the feet.',
+    'A slug\'s blood is green.',
   ];
+
+  List<bool> answers = [
+    false,
+    true,
+    true,
+  ];
+
+  int questionNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +71,8 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10),
             child: Center(
               child: Text(
-                'All Your Questions Goes Here',
+                // 'All Your Questions Goes Here',
+                questions[questionNumber],
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -105,12 +103,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 // user picks True
                 setState(() {
-                  scorKeeper.add(
-                    Icon(
-                      Icons.check,
-                      color: Colors.green,
-                    ),
-                  );
+                  questionNumber++;
                 });
               },
             ),
@@ -136,12 +129,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //User picks False
                 setState(() {
-                  scorKeeper.add(
-                    Icon(
-                      Icons.close,
-                      color: Colors.red,
-                    ),
-                  );
+                  questionNumber++;
                 });
               },
             ),
