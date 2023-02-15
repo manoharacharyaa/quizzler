@@ -65,7 +65,7 @@ class _QuizPageState extends State<QuizPage> {
             child: Center(
               child: Text(
                 // 'All Your Questions Goes Here',
-                quizBrain.questionBank[questionNumber].questionText,
+                quizBrain.getQuestionText(questionNumber),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -95,8 +95,10 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 // user picks True
-                bool correctAnswer =
-                    quizBrain.questionBank[questionNumber].questionAnswer;
+                //here we are able to explicitly change the answer which should not be
+                //done by main.dart its the job of quiz_brain.dart
+                // quizBrain.questionBank[questionNumber].questionAnswer = true;
+                bool correctAnswer = quizBrain.getCorrectAnswer(questionNumber);
                 if (correctAnswer == true) {
                   print('User got it right!');
                 } else {
@@ -128,8 +130,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //User picks False
-                bool correctAnswer =
-                    quizBrain.questionBank[questionNumber].questionAnswer;
+                bool correctAnswer = quizBrain.getCorrectAnswer(questionNumber);
                 if (correctAnswer == false) {
                   print('User got it right!');
                 } else {
