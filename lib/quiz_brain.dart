@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:ffi';
 import 'package:quizzler/question.dart';
 
 class QuizBrain {
+  int _questionNumber = 0;
   List<Question> _questionBank = [
 //As we made _questionBank a private class now only QuizBrain can access it
     Question('Some cats are actually allergic to humans', true),
@@ -31,11 +33,18 @@ class QuizBrain {
         true),
   ];
 
-//Creating a new method so that we can access in main class
-  String getQuestionText(int questionNumber) {
-    return _questionBank[questionNumber].questionText;
+  void nextQuestion() {
+    if (_questionNumber < _questionBank.length - 1) {
+      _questionNumber++;
+    }
   }
-  bool getCorrectAnswer(int questionNumber) {
-    return _questionBank[questionNumber].questionAnswer;
+
+//Creating a new method so that we can access in main class
+  String getQuestionText() {
+    return _questionBank[_questionNumber].questionText;
+  }
+
+  bool getCorrectAnswer() {
+    return _questionBank[_questionNumber].questionAnswer;
   }
 }

@@ -48,10 +48,6 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   List<Icon> scorKeeper = [];
 
-//Creating list of questions
-
-  int questionNumber = 0;
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -65,7 +61,7 @@ class _QuizPageState extends State<QuizPage> {
             child: Center(
               child: Text(
                 // 'All Your Questions Goes Here',
-                quizBrain.getQuestionText(questionNumber),
+                quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
@@ -94,18 +90,14 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                // user picks True
-                //here we are able to explicitly change the answer which should not be
-                //done by main.dart its the job of quiz_brain.dart
-                // quizBrain.questionBank[questionNumber].questionAnswer = true;
-                bool correctAnswer = quizBrain.getCorrectAnswer(questionNumber);
+                bool correctAnswer = quizBrain.getCorrectAnswer();
                 if (correctAnswer == true) {
                   print('User got it right!');
                 } else {
                   print('User got it wrong');
                 }
                 setState(() {
-                  questionNumber++;
+                  quizBrain.nextQuestion();
                 });
               },
             ),
@@ -130,14 +122,14 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //User picks False
-                bool correctAnswer = quizBrain.getCorrectAnswer(questionNumber);
+                bool correctAnswer = quizBrain.getCorrectAnswer();
                 if (correctAnswer == false) {
                   print('User got it right!');
                 } else {
                   print('User got it wrong');
                 }
                 setState(() {
-                  questionNumber++;
+                  quizBrain.nextQuestion();
                 });
               },
             ),
